@@ -25,12 +25,16 @@
   },
   "homepage": "https://github.com/Gil2015/react-native-table-component#readme",
   "devDependencies": {
+    "@types/react": "^16.8.25",
+    "@types/react-native": "^0.60.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
     "prettier": "^1.15.3",
     "react": "^16.7.0",
-    "react-native": "^0.57.8"
+    "react-native": "^0.57.8",
+    "react-native-typescript-transformer": "^1.2.13",
+    "typescript": "^3.5.3"
   }
 }

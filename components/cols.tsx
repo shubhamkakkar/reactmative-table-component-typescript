@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { View, ViewPropTypes, Text, StyleSheet } from 'react-native';
+import { View, ViewPropTypes, Text, StyleSheet, ViewStyle, StyleProp, TextStyle } from 'react-native';
 import { Cell } from './cell';
 import { sum } from '../utils';
 
-export class Col extends Component {
-  static propTypes = {
-    width: PropTypes.number,
-    style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style
-  };
 
-  render() {
-    const { data, style, width, heightArr, flex, textStyle, ...props } = this.props;
+interface ColProps {
+  style: StyleProp<ViewStyle>,
+  width: number,
+  textStyle: StyleProp<TextStyle>,
+  data: string,
+}
 
-    return data ? (
-      <View style={[width ? { width: width } : { flex: 1 }, flex && { flex: flex }, style]}>
-        {data.map((item, i) => {
-          const height = heightArr && heightArr[i];
-          return <Cell key={i} data={item} width={width} height={height} textStyle={textStyle} {...props} />;
-        })}
-      </View>
-    ) : null;
+export function Col(props: ColProps) {
+
+  const { data, style, width, heightArr, flex, textStyle, ...rest } = props;
+
+  if (data) {
+    return <View style={[width ? { width: width } : { flex: 1 }, flex && { flex: flex }, style]}>
+      {data.map((item: string, i: string | number | undefined) => {
+        const height = heightArr && heightArr[i];
+        return <Cell key={i} data={item} width={width} height={height} textStyle={textStyle} {...rest} />;
+      })}
+    </View>
+  } else {
+    return null
   }
+
 }
 
 export class Cols extends Component {
